@@ -45,7 +45,11 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, h4, .brand {
+h1,
+h2,
+h3,
+h4,
+.brand {
     font-family: var(--font-heading);
     font-weight: 700;
 }
@@ -227,99 +231,108 @@ header.scrolled .nav-cta:hover {
 }
 
 /* Hero Section */
-#hero {
-    height: 100vh;
+/* New Hero Styles */
+#hero-new {
+    height: 90vh;
+    /* Leaves room for the scroll effect */
+    background: white;
     display: flex;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-end;
+    /* Keeps you at the bottom of the section */
     position: relative;
-    background-color: var(--bg-dark);
-    color: var(--text-light);
     overflow: hidden;
 }
 
-.hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
+.hero-container {
     width: 100%;
     height: 100%;
-    background-image: url('file:///C:/Users/Ashley/.gemini/antigravity/brain/f9625d46-19be-436a-98b9-91f5fba2db13/hero_background_worktop_1769425972026.png');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-    animation: kenBurns 30s infinite alternate ease-in-out;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* The Gradient and Rounded Corners */
+    background: linear-gradient(to top, #91211f 0%, #91211f 35%, rgba(255, 255, 255, 0) 100%);
+    border-bottom-left-radius: 80px;
+    border-bottom-right-radius: 80px;
 }
 
-@keyframes kenBurns {
-    from {
-        transform: scale(1);
-    }
-    to {
-        transform: scale(1.15) translate(-2%, -1%);
-    }
-}
-
-.hero-overlay {
+/* Background Heading "WORKTOPS" */
+.hero-bg-text {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 100%);
+    top: 15%;
+    font-family: var(--font-heading);
+    font-size: clamp(5rem, 15vw, 12rem);
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.15);
+    /* Subtle watermark style */
+    letter-spacing: -5px;
     z-index: 1;
+    animation: floatText 6s ease-in-out infinite;
+    pointer-events: none;
 }
 
-.hero-content {
+/* Person Image Styling */
+.hero-person {
     position: relative;
     z-index: 2;
-    max-width: 800px;
-    padding-top: 60px;
-}
-
-.pill-tag {
-    display: inline-block;
-    padding: 6px 16px;
-    background: var(--secondary-color);
-    color: var(--text-dark);
-    border-radius: var(--pill-radius);
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    letter-spacing: 1px;
-}
-
-#hero h1 {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    line-height: 1.1;
-    margin-bottom: 24px;
-}
-
-#hero h1 span {
-    color: var(--secondary-color);
-    position: relative;
-}
-
-#hero p {
-    font-size: 1.25rem;
-    max-width: 600px;
-    margin-bottom: 40px;
-    opacity: 0.9;
-}
-
-.hero-actions {
+    width: 100%;
+    max-width: 700px;
     display: flex;
-    gap: 20px;
+    justify-content: center;
+    animation: floatImage 5s ease-in-out infinite;
 }
 
-.pill-button.secondary {
-    border-color: var(--text-light);
-    color: var(--text-light);
+.hero-person img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.3));
 }
 
-.pill-button.secondary:hover {
-    background: var(--text-light);
-    color: var(--text-dark);
+/* Floating Animations */
+@keyframes floatImage {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes floatText {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.hero-cta-overlay {
+    position: absolute;
+    bottom: 10%;
+    z-index: 3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-container {
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+    }
+
+    .hero-bg-text {
+        top: 25%;
+    }
 }
 
 /* Testimonial Carousel (Hero) */
@@ -364,6 +377,7 @@ header.scrolled .nav-cta:hover {
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(-50%);
     }
@@ -645,6 +659,7 @@ header.scrolled .nav-cta:hover {
         transform: scale(0.5);
         opacity: 0;
     }
+
     to {
         transform: scale(1);
         opacity: 1;
