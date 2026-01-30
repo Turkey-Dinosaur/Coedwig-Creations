@@ -26,13 +26,26 @@
             <div class="logo">
                 <img src="logo.png" alt="Coedwig Creations Logo" class="brand-logo">
             </div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#process">Process</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact" class="pill-button nav-cta">Get a Quote</a></li>
-            </ul>
+
+            <button class="hamburger" id="hamburger-menu" aria-label="Open Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <div class="nav-menu" id="nav-menu">
+                <button class="menu-close" id="menu-close" aria-label="Close Menu">&times;</button>
+                <div class="mobile-logo-container">
+                    <img src="logo.png" alt="Coedwig Creations Logo" class="mobile-menu-logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact" class="pill-button nav-cta">Get a Quote</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
@@ -317,7 +330,6 @@
         <!-- Contact Section -->
         <section id="contact" class="reveal">
             <div class="container" style="text-align: center;">
-                <div class="pill-tag" style="background: white;">Get In Touch</div>
                 <h3 style="font-size: clamp(2.5rem, 6vw, 3.5rem); color: var(--secondary-color); margin-bottom: 20px;">
                     Ready to <span>Restore</span> Your Woodwork?</h3>
                 <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 50px; opacity: 0.9; line-height: 1.6;">The
@@ -356,8 +368,7 @@
 
     <footer>
         <div class="container">
-            <img src="file:///C:/Users/Ashley/.gemini/antigravity/brain/f9625d46-19be-436a-98b9-91f5fba2db13/uploaded_media_1769432223391.png"
-                alt="Coedwig Creations Logo" class="brand-logo footer-logo">
+            <img src="logo.png" alt="Coedwig Creations Logo" class="brand-logo">
             <p>&copy; 2026 Coedwig Creations. Based in Llanharry, South Wales.</p>
             <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.5;">Award-winning Wood Restoration & Furniture
                 Specialists.</p>
