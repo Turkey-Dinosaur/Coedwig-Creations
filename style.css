@@ -156,8 +156,8 @@ header.scrolled .brand-logo {
 .nav-links li a {
     font-size: 1rem;
     font-weight: 600;
-    color: #ffffff;
-    /* High visibility over hero */
+    color: var(--text-dark);
+    /* Changed from white to dark for visibility */
     position: relative;
     padding-bottom: 5px;
     display: inline-block;
@@ -346,174 +346,406 @@ header.scrolled .nav-cta:hover {
     }
 }
 
-/* Hero CTA Specifics */
-.hero-cta-main {
-    background-color: var(--secondary-color) !important;
-    color: rgb(0, 0, 0) !important;
-    border: none !important;
-    padding: 14px 40px !important;
-    font-size: 1.1rem !important;
-}
-
-.hero-cta-main:hover {
-    background-color: white !important;
-    color: var(--primary-color) !important;
-    transform: translateY(-3px) scale(1.05) !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
-}
-
-/* New Hero Styles */
-#hero-new {
-    height: 100vh;
-    width: 100vw;
-    /* Forces full viewport width */
-    margin: 0;
-    padding: 0;
-    background: white;
+/* Hero Redesign Styles */
+#hero-redesign {
+    height: calc(100vh - 100px);
+    min-height: 550px;
+    /* Reduced minimum height */
+    background-color: var(--primary-color);
     position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+    overflow: hidden;
+    /* Keeps content inside rounded corners */
+    display: flex;
+    flex-direction: column;
+    margin: 90px 20px 0;
+    /* Tighter top margin */
+    padding-top: 40px;
+    /* Added padding since tab space is gone */
+    border-radius: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
 
-.hero-container {
+/* Removed #hero-redesign::before (the top white bar) */
+
+.hero-bg-texture {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--primary-color);
-    /* This overflow property is what will round off the scroller corners */
-    overflow: hidden;
-    border-bottom-left-radius: 80px;
-    border-bottom-right-radius: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.hero-bg-text {
-    position: absolute;
-    text-align: center;
-    top: 31%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: var(--font-heading);
-    font-size: clamp(3.5rem, 12vw, 12rem);
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.25);
-    z-index: 1;
-    white-space: normal;
-    width: 95%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.15;
     pointer-events: none;
-    line-height: 1;
-    animation: floatText 6s ease-in-out infinite;
+    mix-blend-mode: overlay;
+    z-index: 1;
 }
 
-.hero-person {
+.hero-dotted-overlay {
     position: absolute;
-    bottom: 0;
-    z-index: 2;
-    height: 90vh;
-    /* Filling more of the screen */
-    display: flex;
-    align-items: flex-end;
-    animation: floatImage 5s ease-in-out infinite;
-}
-
-.hero-person img {
-    height: 80%;
-    width: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4));
-}
-
-.hero-footer-group {
-    position: absolute;
-    bottom: 0;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-header-bar {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    z-index: 5;
+}
+
+.review-pill {
+    background: white;
+    padding: 6px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    /* Link reset */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.review-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.review-content {
     display: flex;
     flex-direction: column;
+    line-height: 1.1;
+}
+
+.stars {
+    color: #FFD700;
+    font-size: 0.8rem;
+}
+
+.review-text {
+    color: var(--text-dark);
+    font-size: 0.75rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+}
+
+.hero-main-content {
+    display: flex;
+    /* Changed to Flexbox for reliability */
+    flex-direction: row;
     align-items: center;
+    /* Vertically center content */
+    justify-content: space-between;
+    height: 100%;
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
     z-index: 10;
 }
 
-.hero-cta-wrap {
-    margin-bottom: 40px;
-}
-
-.hero-testimonials-new {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    padding: 5px 0;
-    overflow: hidden;
-    /* Extra insurance to make sure it follows the parent's curves */
-    border-bottom-left-radius: inherit;
-    border-bottom-right-radius: inherit;
-}
-
-.testimonial-track {
+.hero-text-side {
+    flex: 1;
     display: flex;
-    width: max-content;
-    animation: scroll 40s linear infinite;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 40px;
+    /* Space for experience text */
+    padding-top: 20px;
+    position: relative;
+    z-index: 20;
+    opacity: 1 !important;
+    /* Force visibility */
+    visibility: visible !important;
 }
 
-.hero-testimonial-item {
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    /* Adjusted for better fit */
     color: white;
-    padding: 0 60px;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    font-weight: 800;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.highlight-text {
+    color: var(--secondary-color);
+    font-size: 1.05em;
+    display: inline-block;
+    transform: skewX(-5deg);
+    margin: 0 5px;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.hero-subtitle {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 450px;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.hero-input-bar {
+    background: white;
+    padding: 8px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    margin-bottom: 60px;
+    /* Space above experience text */
+}
+
+.input-label {
+    padding-left: 15px;
+    color: var(--text-dark);
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+.input-select {
+    background: #f8f8f8;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: var(--text-medium);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #ddd;
+}
+
+.hero-book-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-dark);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hero-book-btn:hover {
+    background-color: var(--text-dark);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.experience-text {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 0.8;
+    font-family: var(--font-heading);
+    pointer-events: none;
     white-space: nowrap;
-    font-size: 1.2rem;
 }
 
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
+.experience-text span {
+    font-size: 1.5rem;
+    display: block;
+    font-weight: 400;
+    font-style: italic;
+    padding-left: 8px;
 }
 
-@keyframes floatImage {
+.hero-image-side {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    /* Align right to avoid overlap */
+    height: 100%;
+}
+
+
+.hero-person-img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: auto;
+    max-height: 100%;
+    /* Prevent top cutoff */
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
+    z-index: 2;
+    margin-right: -20px;
+    /* Slight overlap to right if needed */
+}
+
+.intro-video-pill {
+    position: absolute;
+    bottom: 50px;
+    /* Moved up slightly to clear the very bottom */
+    right: 30px;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 25px;
+    display: flex;
+    gap: 12px;
+    width: 260px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    animation: float 5s ease-in-out infinite;
+}
+
+.pill-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 3px solid var(--secondary-color);
+}
+
+.pill-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.pill-info p {
+    margin-bottom: 8px;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.watch-video-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-dark);
+    font-weight: 800;
+    font-size: 0.85rem;
+}
+
+.play-icon {
+    width: 24px;
+    height: 24px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dark);
+    font-size: 0.7rem;
+    padding-left: 2px;
+}
+
+@keyframes float {
 
     0%,
     100% {
-        transform: translateY(0);
+        transform: translateY(0) rotate(0deg);
     }
 
     50% {
-        transform: translateY(-20px);
+        transform: translateY(-15px) rotate(1deg);
     }
 }
 
-@keyframes floatText {
-
-    0%,
-    100% {
-        transform: translate(-50%, -50%);
+/* Mobile Responsive */
+@media (max-width: 991px) {
+    #hero-redesign {
+        height: auto;
+        margin: 100px 10px 0;
+        border-radius: 30px;
+        padding-bottom: 40px;
     }
 
-    50% {
-        transform: translate(-50%, calc(-50% - 15px));
+    #hero-redesign::before {
+        display: none;
+        /* Simplify top on mobile */
     }
-}
 
-/* Mobile Fix */
-@media (max-width: 768px) {
-    #hero-new {
+    .hero-raised-tab {
         width: 100%;
-        left: 0;
-        margin-left: 0;
+        position: relative;
+        height: auto;
+        padding: 20px 0;
     }
 
-    .hero-container {
-        border-bottom-left-radius: 40px;
-        border-bottom-right-radius: 40px;
+    .hero-main-content {
+        flex-direction: column;
+        width: 95%;
+        text-align: center;
     }
 
-    .hero-person {
-        height: 70vh;
+    .hero-text-side {
+        padding-top: 0;
+        align-items: center;
+        padding-bottom: 40px;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .hero-input-bar {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .input-select {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .hero-book-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-image-side {
+        height: 400px;
+        justify-content: center;
+        margin-right: 0;
+    }
+
+    .hero-person-img {
+        height: 100%;
+        margin-right: 0;
+    }
+
+    .intro-video-pill {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin-top: -40px;
+        /* Overlap image */
+        width: 90%;
+    }
+
+    .experience-text {
+        position: static;
+        margin-top: 20px;
+        text-align: center;
+        font-size: 3rem;
     }
 }
 
