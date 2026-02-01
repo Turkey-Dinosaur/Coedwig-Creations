@@ -115,7 +115,7 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 25px 0;
+    padding: 15px 0;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -286,7 +286,7 @@ header.scrolled .nav-cta:hover {
         flex-direction: column;
         align-items: center;
         overflow-y: auto;
-        padding: 40px 0;
+        padding: 60px 0;
     }
 
     .nav-menu.active {
@@ -348,8 +348,9 @@ header.scrolled .nav-cta:hover {
 
 /* Hero Redesign Styles */
 #hero-redesign {
-    height: calc(100vh - 100px);
-    min-height: 550px;
+    --hero-original-height: calc(100vh - 100px);
+    height: calc(var(--hero-original-height) * 1);
+    min-height: 500px;
     /* Reduced minimum height */
     background-color: var(--primary-color);
     position: relative;
@@ -357,9 +358,9 @@ header.scrolled .nav-cta:hover {
     /* Keeps content inside rounded corners */
     display: flex;
     flex-direction: column;
-    margin: 90px 20px 0;
+    margin: 90px 10px 0;
     /* Tighter top margin */
-    padding-top: 40px;
+    padding-top: 60px;
     /* Added padding since tab space is gone */
     border-radius: 40px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
@@ -370,11 +371,14 @@ header.scrolled .nav-cta:hover {
 .hero-bg-texture {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: -20%;
+    width: 150%;
     height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.15;
+    background-image: url("OakBG.png");
+    background-size: cover;
+    background-position: left;
+    opacity: 0.3;
+    /* High transparency / Low opacity for subtlety */
     pointer-events: none;
     mix-blend-mode: overlay;
     z-index: 1;
@@ -389,14 +393,14 @@ header.scrolled .nav-cta:hover {
     background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
     background-size: 30px 30px;
     pointer-events: none;
-    z-index: 1;
+    z-index: 2;
 }
 
 .hero-header-bar {
     position: absolute;
     top: 30px;
     left: 40px;
-    z-index: 5;
+    z-index: 15;
 }
 
 .review-pill {
@@ -438,12 +442,10 @@ header.scrolled .nav-cta:hover {
 
 .hero-main-content {
     display: flex;
-    /* Changed to Flexbox for reliability */
     flex-direction: row;
     align-items: center;
-    /* Vertically center content */
     justify-content: space-between;
-    height: 100%;
+    height: var(--hero-original-height);
     width: 90%;
     max-width: 1400px;
     margin: 0 auto;
@@ -467,8 +469,8 @@ header.scrolled .nav-cta:hover {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4.2rem);
-    /* Adjusted for better fit */
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    /* Reduced from 2.5rem/4.2rem */
     color: white;
     line-height: 1.05;
     margin-bottom: 20px;
@@ -486,7 +488,8 @@ header.scrolled .nav-cta:hover {
 }
 
 .hero-subtitle {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
+    /* Reduced from 1.05rem */
     color: rgba(255, 255, 255, 0.9);
     max-width: 450px;
     margin-bottom: 30px;
@@ -495,15 +498,15 @@ header.scrolled .nav-cta:hover {
 
 .hero-input-bar {
     background: white;
-    padding: 8px;
+    padding: 5px;
     border-radius: 16px;
     display: flex;
     align-items: center;
     gap: 10px;
     width: fit-content;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-    margin-bottom: 60px;
-    /* Space above experience text */
+    margin-bottom: 40px;
+    /* Reduced space significantly */
 }
 
 .input-label {
@@ -549,27 +552,6 @@ header.scrolled .nav-cta:hover {
     transform: translateY(-3px);
 }
 
-.experience-text {
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    color: rgba(255, 255, 255, 0.15);
-    font-size: 3rem;
-    font-weight: 900;
-    line-height: 0.8;
-    font-family: var(--font-heading);
-    pointer-events: none;
-    white-space: nowrap;
-}
-
-.experience-text span {
-    font-size: 1.5rem;
-    display: block;
-    font-weight: 400;
-    font-style: italic;
-    padding-left: 8px;
-}
-
 .hero-image-side {
     flex: 1;
     position: relative;
@@ -583,24 +565,17 @@ header.scrolled .nav-cta:hover {
 
 .hero-person-img {
     position: absolute;
-    bottom: 0;
+    top: 0;
     right: 0;
-    height: auto;
-    max-height: 100%;
-    /* Prevent top cutoff */
-    width: auto;
-    max-width: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
-    z-index: 2;
-    margin-right: -20px;
-    /* Slight overlap to right if needed */
+    height: var(--hero-original-height);
+    object-fit: cover;
+    object-position: bottom;
 }
 
 .intro-video-pill {
     position: absolute;
-    bottom: 50px;
-    /* Moved up slightly to clear the very bottom */
+    bottom: 90px;
+    /* Moved up for carousel */
     right: 30px;
     background: white;
     padding: 10px 15px;
@@ -693,6 +668,7 @@ header.scrolled .nav-cta:hover {
         flex-direction: column;
         width: 95%;
         text-align: center;
+        height: auto;
     }
 
     .hero-text-side {
@@ -739,13 +715,6 @@ header.scrolled .nav-cta:hover {
         margin-top: -40px;
         /* Overlap image */
         width: 90%;
-    }
-
-    .experience-text {
-        position: static;
-        margin-top: 20px;
-        text-align: center;
-        font-size: 3rem;
     }
 }
 
@@ -808,6 +777,94 @@ header.scrolled .nav-cta:hover {
     color: var(--text-medium);
     font-size: 1.05rem;
 }
+
+/* Hero Testimonials Carousel */
+/* Hero Testimonials Carousel */
+.hero-testimonials-carousel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.5);
+    /* More transparent (was 0.75) */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    overflow: hidden;
+    /* Gradient mask to fade edges */
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.carousel-track {
+    display: flex;
+    gap: 80px;
+    width: max-content;
+    animation: scroll 60s linear infinite;
+    /* Slowed down from 40s */
+    padding-left: 100%;
+}
+
+/* Smooth continuous scroll */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+        /* Move primarily based on content width */
+    }
+}
+
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+.carousel-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+    white-space: nowrap;
+    opacity: 0.95;
+    font-size: 0.9rem;
+}
+
+.carousel-item p {
+    font-style: normal;
+    /* Changed from italic */
+    font-weight: 300;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.carousel-item .author {
+    font-weight: 700;
+    color: var(--secondary-color);
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 991px) {
+    .hero-testimonials-carousel {
+        border-radius: 0 0 30px 30px;
+        height: 50px;
+    }
+
+    .carousel-item {
+        font-size: 0.8rem;
+    }
+}
+
+
 
 .pill-image {
     border-radius: calc(var(--section-radius) - 10px);
