@@ -122,7 +122,7 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 15px 0;
+    padding: 5px 0;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -140,6 +140,7 @@ nav {
 }
 
 .brand-logo {
+    display: block;
     height: 60px;
     width: auto;
     transition: transform 0.3s ease;
@@ -367,10 +368,8 @@ header.scrolled .nav-cta:hover {
     /* Keeps content inside rounded corners */
     display: flex;
     flex-direction: column;
-    margin: 100px 10px 0;
-    /* Tighter top margin */
-    padding-top: 80px;
-    /* Added padding since tab space is gone */
+    margin: 95px 10px 10px;
+
     border-radius: 40px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
@@ -413,6 +412,8 @@ header.scrolled .nav-cta:hover {
 }
 
 .review-pill {
+    margin-left: -18px;
+    margin-top: -10px;
     background: white;
     padding: 6px 20px;
     border-radius: 50px;
@@ -421,7 +422,6 @@ header.scrolled .nav-cta:hover {
     gap: 10px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     text-decoration: none;
-    /* Link reset */
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -471,17 +471,18 @@ header.scrolled .nav-cta:hover {
     flex-direction: column;
     justify-content: center;
     padding-bottom: 40px;
-    padding-top: 20px;
+    padding-top: 40px;
     position: relative;
     z-index: 20;
 }
 
 .hero-title {
-    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-size: clamp(6rem, 4vw, 3.5rem);
     color: white;
     line-height: 1.05;
     margin-bottom: 20px;
     font-weight: 800;
+    padding-top: 40px;
     text-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
@@ -495,7 +496,7 @@ header.scrolled .nav-cta:hover {
 }
 
 .hero-subtitle {
-    font-size: 0.95rem;
+    font-size: 1.5rem;
     color: rgba(255, 255, 255, 0.9);
     max-width: 450px;
     margin-bottom: 30px;
@@ -505,14 +506,14 @@ header.scrolled .nav-cta:hover {
 .hero-book-btn {
     background-color: var(--secondary-color);
     color: var(--text-dark);
-    padding: 14px 30px;
+    padding: 18px 34px;
     border-radius: 12px;
     font-weight: 800;
     font-family: var(--font-heading);
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     width: fit-content;
     margin-bottom: 30px;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -570,13 +571,13 @@ header.scrolled .nav-cta:hover {
     position: absolute;
     bottom: 90px;
     /* Moved up for carousel */
-    right: 30px;
+    right: 160px;
     background: white;
-    padding: 10px 15px;
+    padding: 20px 30px;
     border-radius: 25px;
     display: flex;
     gap: 12px;
-    width: 260px;
+    width: 300px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     z-index: 10;
     animation: float 5s ease-in-out infinite;
@@ -601,6 +602,7 @@ header.scrolled .nav-cta:hover {
     margin-bottom: 8px;
     line-height: 1.4;
     font-weight: 500;
+    font-size: 1.2rem;
 }
 
 .watch-video-btn {
@@ -609,7 +611,7 @@ header.scrolled .nav-cta:hover {
     gap: 10px;
     color: var(--text-dark);
     font-weight: 800;
-    font-size: 0.85rem;
+    font-size: 5rem;
 }
 
 .play-icon {
@@ -621,7 +623,7 @@ header.scrolled .nav-cta:hover {
     align-items: center;
     justify-content: center;
     color: var(--text-dark);
-    font-size: 0.7rem;
+    font-size: 5rem;
     padding-left: 2px;
 }
 
@@ -644,7 +646,7 @@ header.scrolled .nav-cta:hover {
         min-height: unset;
         margin: 80px 10px 0;
         border-radius: 30px;
-        padding: 40px 15px 80px;
+        padding: 30px 15px 40px;
         display: flex;
         flex-direction: column;
     }
@@ -665,16 +667,13 @@ header.scrolled .nav-cta:hover {
 
     .hero-title {
         order: 1;
-        font-size: clamp(2rem, 9vw, 2.6rem);
+        font-size: clamp(3rem, 9vw, 2.6rem);
         margin-bottom: 12px;
         width: 100%;
     }
 
     .hero-subtitle {
-        order: 2;
-        font-size: 0.95rem;
-        margin-bottom: 25px;
-        width: 100%;
+        display: none;
     }
 
     .hero-book-btn {
@@ -699,7 +698,7 @@ header.scrolled .nav-cta:hover {
 
     .hero-person-img {
         position: relative;
-        height: 320px;
+        height: 450px;
         width: auto;
         top: auto;
         right: auto;
@@ -733,13 +732,64 @@ header.scrolled .nav-cta:hover {
     }
 
     .hero-person-img {
-        height: 280px;
+        height: 400px;
     }
 }
 
+/* Mobile Video Section - Hidden on Desktop */
+.mobile-only-video {
+    display: none;
+}
+
+@media (max-width: 991px) {
+    .mobile-only-video {
+        display: block;
+        background-color: #f9f9f9;
+        padding: 40px 0;
+        margin: 0;
+    }
+
+    .video-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+        padding: 0 15px;
+    }
+
+    .video-container iframe {
+        width: 100% !important;
+        max-width: 500px;
+        height: auto;
+        aspect-ratio: 9 / 16;
+        min-height: 70vh;
+        max-height: 85vh;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-only-video {
+        padding: 30px 0;
+    }
+
+    .video-container {
+        padding: 0 10px;
+    }
+
+    .video-container iframe {
+        min-height: 65vh;
+        max-height: 80vh;
+        border-radius: 15px;
+    }
+}
+
+
 /* Section Containers & Headers */
 .section-header {
-    margin-bottom: 60px;
+    padding-bottom: 120px;
     text-align: center;
 }
 
@@ -852,7 +902,7 @@ header.scrolled .nav-cta:hover {
     color: white;
     white-space: nowrap;
     opacity: 0.95;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
 }
 
 .carousel-item p {
@@ -868,7 +918,7 @@ header.scrolled .nav-cta:hover {
     color: var(--secondary-color);
     font-family: var(--font-heading);
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 1.2rem;
     letter-spacing: 0.5px;
 }
 
@@ -879,7 +929,7 @@ header.scrolled .nav-cta:hover {
     }
 
     .carousel-item {
-        font-size: 0.8rem;
+        font-size: 1.2rem;
     }
 }
 
@@ -938,6 +988,13 @@ header.scrolled .nav-cta:hover {
 }
 
 /* Process Grid */
+.process-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
 .process-grid.centered {
     display: flex;
     flex-wrap: wrap;
@@ -1151,7 +1208,7 @@ header.scrolled .nav-cta:hover {
     background-color: var(--primary-color);
     color: var(--text-light);
     border-radius: var(--section-radius) var(--section-radius) 0 0;
-    padding-bottom: 0px;
+    padding-top: 100px;
 }
 
 #contact h2 {
@@ -1259,8 +1316,9 @@ footer {
 /* Reveal Animations */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateY(50px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .reveal.active {
@@ -1268,14 +1326,169 @@ footer {
     transform: translateY(0);
 }
 
+/* Fade Up Animation (default) */
+.reveal.fade-up {
+    opacity: 0;
+    transform: translateY(60px);
+}
+
+.reveal.fade-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Fade Left Animation */
+.reveal.fade-left {
+    opacity: 0;
+    transform: translateX(-60px);
+}
+
+.reveal.fade-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Fade Right Animation */
+.reveal.fade-right {
+    opacity: 0;
+    transform: translateX(60px);
+}
+
+.reveal.fade-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Scale In Animation */
+.reveal.scale-in {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.reveal.scale-in.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Staggered children animations */
+.reveal.active .process-card,
+.reveal.active .gallery-item,
+.reveal.active .pill-container {
+    animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) backwards;
+}
+
+.reveal.active .process-card:nth-child(1),
+.reveal.active .gallery-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.reveal.active .process-card:nth-child(2),
+.reveal.active .gallery-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.reveal.active .process-card:nth-child(3),
+.reveal.active .gallery-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.reveal.active .process-card:nth-child(4),
+.reveal.active .gallery-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.reveal.active .gallery-item:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.reveal.active .gallery-item:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(40px);
     }
 
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Mobile optimizations - reduce animation distance */
+@media (max-width: 768px) {
+    .reveal {
+        transform: translateY(30px);
+    }
+
+    .reveal.fade-up {
+        transform: translateY(30px);
+    }
+
+    .reveal.fade-left {
+        transform: translateX(-30px);
+    }
+
+    .reveal.fade-right {
+        transform: translateX(30px);
+    }
+
+    .reveal.scale-in {
+        transform: scale(0.95);
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+/* Respect user's motion preferences */
+@media screen and (prefers-reduced-motion: reduce) {
+
+    .reveal,
+    .reveal.fade-up,
+    .reveal.fade-left,
+    .reveal.fade-right,
+    .reveal.scale-in {
+        opacity: 0;
+        transform: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .reveal.active,
+    .reveal.fade-up.active,
+    .reveal.fade-left.active,
+    .reveal.fade-right.active,
+    .reveal.scale-in.active {
+        opacity: 1;
+        transform: none;
+    }
+
+    .reveal.active .process-card,
+    .reveal.active .gallery-item,
+    .reveal.active .pill-container {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
     }
 }

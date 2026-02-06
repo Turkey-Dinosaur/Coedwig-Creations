@@ -1,18 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Reveal animations on scroll
+    // Enhanced reveal animations on scroll with mobile optimization
     const revealElements = document.querySelectorAll('.reveal');
+
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Mobile-optimized threshold
+    const isMobile = window.innerWidth <= 768;
+    const threshold = isMobile ? 0.05 : 0.1;
 
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('active');
+                // Add a small delay for smoother appearance
+                setTimeout(() => {
+                    entry.target.classList.add('active');
+                }, prefersReducedMotion ? 0 : 100);
+
+                // Optional: Unobserve after animation to improve performance
+                // revealObserver.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.1
+        threshold: threshold,
+        rootMargin: isMobile ? '0px 0px -50px 0px' : '0px 0px -100px 0px'
     });
 
-    revealElements.forEach(el => revealObserver.observe(el));
+    revealElements.forEach(el => {
+        // Add animation variety based on section
+        if (el.id === 'gallery') {
+            el.classList.add('scale-in');
+        } else if (el.id === 'about') {
+            el.classList.add('fade-up');
+        } else if (el.id === 'services') {
+            el.classList.add('fade-up');
+        } else if (el.id === 'process') {
+            el.classList.add('fade-up');
+        } else if (el.id === 'testimonials') {
+            el.classList.add('fade-up');
+        }
+
+        revealObserver.observe(el);
+    });
 
     // Smooth scrolling for navigation
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

@@ -1,0 +1,76 @@
+/* Hero Testimonials Carousel */
+.hero-testimonials-carousel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 50;
+    padding: 18px 0;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, rgb(0, 0, 0) 10%, black 10%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 10%, transparent);
+}
+
+.carousel-track {
+    display: flex;
+    gap: 60px;
+    width: max-content;
+    animation: scroll 0.2s linear infinite;
+}
+
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+.carousel-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    white-space: nowrap;
+    opacity: 1;
+    font-size: 0.95rem;
+}
+
+.carousel-item p {
+    font-weight: 300;
+}
+
+.carousel-item .author {
+    font-weight: 700;
+    color: var(--secondary-color);
+    font-family: var(--font-heading);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Ensure hero image doesn't overlap text awkwardly */
+.hero-person-img {
+    z-index: 1;
+    /* Keep it below carousel */
+}
+
+@media (max-width: 768px) {
+    .hero-testimonials-carousel {
+        padding: 12px 0;
+        border-radius: 0 0 30px 30px;
+        /* Match mobile radius */
+    }
+
+    .carousel-item {
+        font-size: 0.8rem;
+    }
+}
